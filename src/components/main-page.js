@@ -3,61 +3,89 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { Link } from "react-router-dom";
 import { requestRanking } from "../actions";
-import {FormGroup}  from 'reactstrap';
-import {Form,Label,Input,placeholder,Button} from 'reactstrap';
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
-import { Jumbotron} from 'reactstrap';
-
-  
-    
+import { FormGroup } from "reactstrap";
+import { Form, Label, Input, placeholder, Button } from "reactstrap";
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink
+} from "reactstrap";
+import stateOptions from "../utils/states";
+import { Jumbotron } from "reactstrap";
+import Select from "react-select";
+import MultiSelect from "@kenshooui/react-multi-select";
+import {
+  univTypeOptions,
+  infrastructureOptions
+} from "../utils/featureConfigs";
 
 class MainPage extends Component {
-    
-    constructor(props) {
-        super(props);
+  state = {
+    selectedState: { id: 1 },
+    selectedUnivType: { id: 2 },
+    collapsed: true,
+    selectedInfrastructure: []
+  };
 
-        this.state={
-            indiaState:' ',
-            universityType:' ',
-            instutionType:' '
-        }
-    
-        this.toggleNavbar = this.toggleNavbar.bind(this);
-        this.state = {
-          collapsed: true
-        };
-      }
-      toggleNavbar() {
-        this.setState({
-          collapsed: !this.state.collapsed
-        });
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-      }
-    
-      handleChange(e) {
-        let target = e.target;
-        let value = target.value;
-        let name = target.name;
+  handleChangeInfraStructure = selectedItems => {
+    console.log(this.selectedItems);
 
-        this.setState({
-          [name]: value
-        });
-    }
+    this.setState({ selectedInfrastructure: selectedItems });
+    console.log(this.state);
+  };
 
-      handleSubmit(e) {
-        e.preventDefault();
+  toggleNavbar = () => {
+    this.setState({
+      collapsed: !this.state.collapsed
+    });
+  };
 
-        console.log('The form was submitted with the following data:');
-        console.log(this.state);
-       
-    }
+  handleChange = e => {
+    let target = e.target;
+    console.log(e);
+    let value = target.value;
+    let name = target.name;
 
-    render() {
-      return (
-        <div>
-            <Navbar color="faded" light>
-          <NavbarBrand href="#" className="mr-auto">SIH2K19</NavbarBrand>
+    this.setState({
+      [name]: value
+    });
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+
+    console.log("The form was submitted with the following data:");
+    console.log(this.state);
+    this.setState({
+      indiaState: " ",
+      indiaStateName: "",
+      universityType: " ",
+      selectedState: null,
+      collapsed: true
+    });
+  };
+
+  handleIndianStateChange = selectedState => {
+    this.setState({ selectedState });
+    console.log(`Option selected:`, selectedState);
+  };
+  handleUnivTypeChange = selectedUnivType => {
+    this.setState({ selectedUnivType });
+    console.log(`Option selected:`, selectedUnivType);
+  };
+
+  render() {
+    const { selectedInfrastructure } = this.state;
+    return (
+      <div>
+        <Navbar color="faded" light>
+          <NavbarBrand href="#" className="mr-auto">
+            SIH2K19
+          </NavbarBrand>
           <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
           <Collapse isOpen={!this.state.collapsed} navbar>
             <Nav navbar>
@@ -70,35 +98,53 @@ class MainPage extends Component {
             </Nav>
           </Collapse>
         </Navbar>
-          <div>
-          
+        <div>
           <Jumbotron>
-          <Form>
-          <FormGroup>
-            <Label for="nstutionType">Institution Type</Label>
-            <Input type="text" name="instutionType" id="instutionType" placeholder="Enter the institution type" value={this.state.instutionType} onChange={this.handleChange} />
-          </FormGroup>
-          <FormGroup>
-            <Label for="universityType">University Type</Label>
-            <Input type="text" name="universityType" id="universityType" placeholder="Enter the University Type" value={this.state.universityType} onChange={this.handleChange} />
-          </FormGroup>
-          <FormGroup>
-            <Label for="indiaState">State</Label>
-            <Input type="text" name="indiaState" id="indiaState" placeholder="Enter the State"  value={this.state.indiaState} onChange={this.handleChange} />
-          </FormGroup>
-          </Form>
-          <Button color="primary" size="lg" onClick={this.handleSubmit}>Submit</Button>
-      </Jumbotron>
-          
-         
-        
+            <Form>
+              <FormGroup>
+                <Label for="universityType">University Type</Label>
+                <Select
+                  className="basic-single"
+                  classNamePrefix="select"
+                  isSearchable
+                  name="universityType"
+                  value={this.state.selectedUnivType}
+                  onChange={this.handleUnivTypeChange}
+                  options={univTypeOptions}
+                  placeholder="University Type Preference"
+                />
+              </FormGroup>
+              <FormGroup>
+                <Label for="indiaState">State</Label>
+                <Select
+                  className="basic-single"
+                  classNamePrefix="select"
+                  isSearchable
+                  name="state"
+                  value={this.state.selectedState}
+                  onChange={this.handleIndianStateChange}
+                  options={stateOptions}
+                  placeholder="Select your State"
+                />
+              </FormGroup>
+              <FormGroup>
+                <Label for="">Choose Your Academic Preferences</Label>
+                <MultiSelect
+                  items={infrastructureOptions}
+                  selectedItems={selectedInfrastructure}
+                  onChange={this.handleChangeInfraStructure}
+                  showSelectAll
+                />
+              </FormGroup>
+            </Form>
+            <Button color="primary" size="lg" onClick={this.handleSubmit}>
+              Submit
+            </Button>
+          </Jumbotron>
+        </div>
       </div>
-      </div>
-        
-        
-      );
-    }
+    );
   }
+}
 
-  export default MainPage;
-  
+export default MainPage;
