@@ -9,4 +9,5 @@ export const institutions = {
     action(INSTITUTIONS.FAILURE, { institutionDetails, error })
 };
 
-export const requestRanking = () => action(REQUEST_RANKING);
+export const requestRanking = preferences =>
+  action(REQUEST_RANKING, { preferences });

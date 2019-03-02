@@ -3,8 +3,19 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { Link } from "react-router-dom";
 import { requestRanking } from "../actions";
-import { FormGroup } from "reactstrap";
-import { Form, Label, Input, placeholder, Button } from "reactstrap";
+import {
+  FormGroup,
+  Form,
+  Label,
+  Input,
+  Button,
+  Card,
+  CardImg,
+  CardText,
+  CardBody,
+  CardTitle,
+  CardSubtitle
+} from "reactstrap";
 import {
   Collapse,
   Navbar,
@@ -15,26 +26,50 @@ import {
   NavLink
 } from "reactstrap";
 import stateOptions from "../utils/states";
+import { requestRankings } from "../actions";
+import { getEntitiesAsList } from "../selectors";
 import { Jumbotron } from "reactstrap";
 import Select from "react-select";
 import MultiSelect from "@kenshooui/react-multi-select";
 import {
   univTypeOptions,
-  infrastructureOptions
+  infrastructureOptions,
+  researchOptions,
+  academicsOptions
 } from "../utils/featureConfigs";
+
+const mapStateToProps = (state, ownProps) => ({
+  univs: getEntitiesAsList(state.institutions)
+});
 
 class MainPage extends Component {
   state = {
     selectedState: { id: 1 },
     selectedUnivType: { id: 2 },
     collapsed: true,
-    selectedInfrastructure: []
+    selectedInfrastructure: [],
+    selectedAcademics: [],
+    selectedResearch: []
   };
 
   handleChangeInfraStructure = selectedItems => {
     console.log(this.selectedItems);
 
     this.setState({ selectedInfrastructure: selectedItems });
+    console.log(this.state);
+  };
+
+  handleChangeAcademics = selectedItems => {
+    console.log(this.selectedItems);
+
+    this.setState({ selectedAcademics: selectedItems });
+    console.log(this.state);
+  };
+
+  handleChangeResearch = selectedItems => {
+    console.log(this.selectedItems);
+
+    this.setState({ selectedResearch: selectedItems });
     console.log(this.state);
   };
 
@@ -56,30 +91,39 @@ class MainPage extends Component {
   };
 
   handleSubmit = e => {
+    const { requestRanking } = this.props;
+    requestRanking(this.state);
     e.preventDefault();
-
     console.log("The form was submitted with the following data:");
-    console.log(this.state);
-    this.setState({
-      indiaState: " ",
-      indiaStateName: "",
-      universityType: " ",
-      selectedState: null,
-      collapsed: true
-    });
+    console.log(JSON.stringify(this.state));
   };
 
   handleIndianStateChange = selectedState => {
-    this.setState({ selectedState });
+    this.setState({
+      selectedState: {
+        ...selectedState,
+        id: 1
+      }
+    });
     console.log(`Option selected:`, selectedState);
   };
   handleUnivTypeChange = selectedUnivType => {
-    this.setState({ selectedUnivType });
+    this.setState({
+      selectedUnivType: {
+        ...selectedUnivType,
+        id: 2
+      }
+    });
     console.log(`Option selected:`, selectedUnivType);
   };
 
   render() {
-    const { selectedInfrastructure } = this.state;
+    const {
+      selectedInfrastructure,
+      selectedAcademics,
+      selectedResearch
+    } = this.state;
+    const { univs } = this.props;
     return (
       <div>
         <Navbar color="faded" light>
@@ -128,11 +172,29 @@ class MainPage extends Component {
                 />
               </FormGroup>
               <FormGroup>
-                <Label for="">Choose Your Academic Preferences</Label>
+                <Label for="">Choose Your Infrastructure Preferences</Label>
                 <MultiSelect
                   items={infrastructureOptions}
                   selectedItems={selectedInfrastructure}
                   onChange={this.handleChangeInfraStructure}
+                  showSelectAll
+                />
+              </FormGroup>
+              <FormGroup>
+                <Label for="">Choose Your Academic Preferences</Label>
+                <MultiSelect
+                  items={academicsOptions}
+                  selectedItems={selectedAcademics}
+                  onChange={this.handleChangeAcademics}
+                  showSelectAll
+                />
+              </FormGroup>
+              <FormGroup>
+                <Label for="">Choose Your Research Preferences</Label>
+                <MultiSelect
+                  items={researchOptions}
+                  selectedItems={selectedResearch}
+                  onChange={this.handleChangeResearch}
                   showSelectAll
                 />
               </FormGroup>
@@ -142,9 +204,38 @@ class MainPage extends Component {
             </Button>
           </Jumbotron>
         </div>
+        <div>
+          {univs.map(e => (
+            <Card>
+              <CardImg
+                top
+                width="80%"
+                src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=20"
+                alt="Card image cap"
+              />
+              <CardBody>
+                <CardTitle>
+                  <h3>{e.university}</h3>
+                </CardTitle>
+                <CardSubtitle>
+                  {e.District} {e.State}
+                </CardSubtitle>
+                <CardText>
+                  Let's have some generic desc here. with University/ college
+                  contact details
+                </CardText>
+                <Button>Matches My Preference</Button>
+              </CardBody>
+            </Card>
+          ))}
+        </div>
+        <Button>Plot them</Button>
       </div>
     );
   }
 }
 
-export default MainPage;
+export default connect(
+  mapStateToProps,
+  { requestRanking }
+)(MainPage);

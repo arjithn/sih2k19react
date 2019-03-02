@@ -14,6 +14,24 @@ export const infrastructureOptions = [
   { id: 18, label: "guest house" }
 ];
 
+export const researchOptions = [
+  { id: 8, label: "no of journals" },
+  { id: 10, label: "laboratory" },
+  { id: 12, label: "opportunity cell" }
+];
+
+export const academicsOptions = [
+  { id: 5, label: "student faculty ratio" },
+  { id: 17, label: "student intakw", disabled: true },
+  { id: 6, label: "playground", disabled: false },
+  { id: 9, label: "library" },
+  { id: 10, label: "laboratory" },
+  { id: 13, label: "teaching staff" },
+  { id: 15, label: "common room" },
+  { id: 16, label: "offers distant course" },
+  { id: 18, label: "guest house" }
+];
+
 export const univTypeOptions = [
   {
     label: "State Public University",

@@ -66,8 +66,41 @@ const institutionSchemaArray = new schema.Array(institutionSchema);
 //   );
 
 export const fetchRankingForEntityBasedOnPref = preferenceDetails => {
-  return Object.assign(
-    {},
-    normalize([{ id: 3 }, { id: 4 }], institutionSchemaArray)
-  );
+  let response = callPostApi("/get-rankings", preferenceDetails);
+  response = [
+    {
+      District: "Vellore",
+      State: "Tamil Nadu",
+      id: 490,
+      university: "Vellore Institute of Technology, Vellore"
+    },
+    {
+      District: "Salem",
+      State: "Tamil Nadu",
+      id: 492,
+      university: "VINAYAKA MISSIONs RESEARCH FOUNDATION, SALEM"
+    },
+    {
+      District: "Thanjavur",
+      State: "Tamil Nadu",
+      id: 476,
+      university:
+        "Shanmugha Arts, Science, Technology & Reserch Academy (SASTRA), Thanjavur"
+    },
+    {
+      District: "Kancheepuram",
+      State: "Tamil Nadu",
+      id: 434,
+      university: "Academy of Maritime Education and Training, Chennai"
+    },
+    {
+      District: "Virudhunagar",
+      State: "Tamil Nadu",
+      id: 458,
+      university:
+        "Kalasalingam Academy of Research and Higher Education, Srivilliputhrur"
+    }
+  ];
+
+  return Object.assign({}, normalize(response, institutionSchemaArray));
 };

@@ -78,11 +78,12 @@ function* fetchEntity(entity, apiFn, id, page = undefined) {
 // );
 
 // load stalls unless it is cached
-function* submitPreferencesForRanking() {
-  const selectedPreference = yield select(getPreferences);
+function* submitPreferencesForRanking(action) {
+  // const selectedPreference = yield select(getPreferences);
+  console.log(action);
   const response = yield call(
     flapi.fetchRankingForEntityBasedOnPref,
-    selectedPreference
+    action.preferences
   );
   if (response) yield put(institutions.success(response));
   console.log(response);
