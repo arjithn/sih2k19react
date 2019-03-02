@@ -10,6 +10,7 @@ import UserProfile from './containers/user-profile'
 import OrderCheckout from './containers/order-checkout'
 import FoodCourtHome from './containers/food-court-home'
 import PaymentResponse from './containers/payment-response'
+import MainPage from './components/main-page'
 
 
 export const Routes = () => {
@@ -20,6 +21,7 @@ export const Routes = () => {
         <Route exact path="/">
           <Redirect to="/landing-page" />
         </Route>
+        <Route exact path="/main-page" component={MainPage} />
         <Route exact path="/restaurant-home/:groupID/:restaurantID" component={RestaurantHome} />
         <Route exact path="/user-login" component={LoginPage} />
         <Route exact path="/phone-verify" component={PhoneVerify} />
