@@ -12,22 +12,20 @@ class LandingPage extends Component {
   render() {
     const { univs, requestRanking } = this.props;
     return (
-      <div className="landing-page-background">
-        <div className="grid-container">
-          <div
-            style={{
-              color: "#999999",
-              width: "75%",
-              marginLeft: "10%",
-              fontSize: "15px",
-              fontWeight: "bold",
-              textAlign: "center",
-              marginTop: "2%"
-            }}
-          />
-          {JSON.stringify(univs)}
-          <button onClick={requestRanking}>CLick me</button>
-        </div>
+      <div className="jumbotron">
+        <div
+          style={{
+            color: "#999999",
+            width: "75%",
+            marginLeft: "10%",
+            fontSize: "15px",
+            fontWeight: "bold",
+            textAlign: "center",
+            marginTop: "2%"
+          }}
+        />
+        {JSON.stringify(univs)}
+        <button onClick={requestRanking}>CLick me</button>
       </div>
     );
   }
