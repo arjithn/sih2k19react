@@ -3,6 +3,14 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { Link } from "react-router-dom";
 import { requestRanking } from "../actions";
+import ReactDOM from "react-dom";
+
+import {
+  Accordion,
+  AccordionItem,
+  AccordionItemTitle,
+  AccordionItemBody
+} from "react-accessible-accordion";
 import {
   FormGroup,
   Form,
@@ -171,33 +179,58 @@ class MainPage extends Component {
                   placeholder="Select your State"
                 />
               </FormGroup>
-              <FormGroup>
-                <Label for="">Choose Your Infrastructure Preferences</Label>
-                <MultiSelect
-                  items={infrastructureOptions}
-                  selectedItems={selectedInfrastructure}
-                  onChange={this.handleChangeInfraStructure}
-                  showSelectAll
-                />
-              </FormGroup>
-              <FormGroup>
-                <Label for="">Choose Your Academic Preferences</Label>
-                <MultiSelect
-                  items={academicsOptions}
-                  selectedItems={selectedAcademics}
-                  onChange={this.handleChangeAcademics}
-                  showSelectAll
-                />
-              </FormGroup>
-              <FormGroup>
-                <Label for="">Choose Your Research Preferences</Label>
-                <MultiSelect
-                  items={researchOptions}
-                  selectedItems={selectedResearch}
-                  onChange={this.handleChangeResearch}
-                  showSelectAll
-                />
-              </FormGroup>
+              <Accordion accordion className="tablist">
+                <AccordionItem>
+                  <AccordionItemTitle>
+                    <h3>Infrastructure Preferences</h3>
+                  </AccordionItemTitle>
+                  <AccordionItemBody>
+                    <FormGroup>
+                      <Label for="">
+                        Choose Your Infrastructure Preferences
+                      </Label>
+                      <MultiSelect
+                        items={infrastructureOptions}
+                        selectedItems={selectedInfrastructure}
+                        onChange={this.handleChangeInfraStructure}
+                        showSelectAll
+                      />
+                    </FormGroup>
+                  </AccordionItemBody>
+                </AccordionItem>
+                <AccordionItem expanded>
+                  <AccordionItemTitle>
+                    <h3>Academic Preferences</h3>
+                  </AccordionItemTitle>
+                  <AccordionItemBody>
+                    <FormGroup>
+                      <Label for="">Choose Your Academic Preferences</Label>
+                      <MultiSelect
+                        items={academicsOptions}
+                        selectedItems={selectedAcademics}
+                        onChange={this.handleChangeAcademics}
+                        showSelectAll
+                      />
+                    </FormGroup>
+                  </AccordionItemBody>
+                </AccordionItem>
+                <AccordionItem>
+                  <AccordionItemTitle>
+                    <h3>Research Preferences</h3>
+                  </AccordionItemTitle>
+                  <AccordionItemBody>
+                    <FormGroup>
+                      <Label for="">Choose Your Research Preferences</Label>
+                      <MultiSelect
+                        items={researchOptions}
+                        selectedItems={selectedResearch}
+                        onChange={this.handleChangeResearch}
+                        showSelectAll
+                      />
+                    </FormGroup>
+                  </AccordionItemBody>
+                </AccordionItem>
+              </Accordion>
             </Form>
             <Button color="primary" size="lg" onClick={this.handleSubmit}>
               Submit
