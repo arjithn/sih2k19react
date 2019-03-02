@@ -1,3 +1,37 @@
+export const transformPreferences = pref => {
+  const reqBody = {};
+  const keys = Object.keys(pref);
+  return keys.reduce((reqBody, key) => {
+    if (Array.isArray(pref[key])) {
+      const x = pref[key];
+      x.forEach(function(element) {
+        reqBody[element["id"]] = 1;
+      });
+    } else
+      reqBody[pref[key]["id"]] = pref[key]["value"] ? pref[key]["value"] : 1;
+    return reqBody;
+  }, {});
+};
+
+console.log(
+  JSON.stringify(
+    transformPreferences({
+      selectedState: { label: "Tamil Nadu", value: 0.06451612903225806, id: 1 },
+      selectedUnivType: {
+        label: "Deemed University-Private",
+        value: 0.20000000000000004,
+        id: 2
+      },
+      selectedInfrastructure: [],
+      selectedAcademics: [
+        { id: 105, label: "student faculty ratio" },
+        { id: 10, label: "laboratory" }
+      ],
+      selectedResearch: [],
+      girlExclusiveFeature: { id: "20" }
+    })
+  )
+);
 export const infrastructureOptions = [
   { id: 5, label: "hostel count" },
   { id: 17, label: "cafeteria", disabled: true },
@@ -15,21 +49,20 @@ export const infrastructureOptions = [
 ];
 
 export const researchOptions = [
-  { id: 8, label: "no of journals" },
+  { id: 22, label: "no of journals" },
   { id: 10, label: "laboratory" },
-  { id: 12, label: "opportunity cell" }
+  { id: 9, label: "library" },
+  { id: 23, label: "opportunity cell" }
 ];
 
 export const academicsOptions = [
-  { id: 5, label: "student faculty ratio" },
-  { id: 17, label: "student intakw", disabled: true },
-  { id: 6, label: "playground", disabled: false },
+  { id: 105, label: "student faculty ratio" },
+  { id: 24, label: "student intake" },
   { id: 9, label: "library" },
   { id: 10, label: "laboratory" },
-  { id: 13, label: "teaching staff" },
-  { id: 15, label: "common room" },
-  { id: 16, label: "offers distant course" },
-  { id: 18, label: "guest house" }
+  { id: 21, label: "teaching staff" },
+  { id: 4, label: "offers distant course" },
+  { id: 16, label: "computer center" }
 ];
 
 export const univTypeOptions = [

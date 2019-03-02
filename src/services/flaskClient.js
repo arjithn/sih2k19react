@@ -1,5 +1,6 @@
 import { camelizeKeys } from "humps";
 import { schema, normalize } from "normalizr";
+import { transformPreferences } from "../utils/featureConfigs";
 
 const API_ROOT = ""; // insert generic name for API  :P
 
@@ -66,7 +67,10 @@ const institutionSchemaArray = new schema.Array(institutionSchema);
 //   );
 
 export const fetchRankingForEntityBasedOnPref = preferenceDetails => {
-  let response = callPostApi("/get-rankings", preferenceDetails);
+  let response = callPostApi(
+    "/get-rankings",
+    transformPreferences(preferenceDetails)
+  );
   response = [
     {
       District: "Vellore",

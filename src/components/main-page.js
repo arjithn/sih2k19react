@@ -54,7 +54,6 @@ class MainPage extends Component {
   state = {
     selectedState: { id: 1 },
     selectedUnivType: { id: 2 },
-    collapsed: true,
     selectedInfrastructure: [],
     selectedAcademics: [],
     selectedResearch: []
@@ -85,6 +84,23 @@ class MainPage extends Component {
     this.setState({
       collapsed: !this.state.collapsed
     });
+  };
+
+  handleCheckbox = e => {
+    console.log(e.target.checked);
+    if (e.target.checked) {
+      this.setState({
+        [e.target.name]: {
+          id: e.target.id
+        }
+      });
+    } else {
+      this.setState({
+        [e.target.name]: {
+          id: null
+        }
+      });
+    }
   };
 
   handleChange = e => {
@@ -231,7 +247,36 @@ class MainPage extends Component {
                   </AccordionItemBody>
                 </AccordionItem>
               </Accordion>
+              <br />
+              <FormGroup check>
+                <Label check>
+                  <h3>
+                    <Input
+                      type="checkbox"
+                      onChange={this.handleCheckbox}
+                      name="Scholarships"
+                      id={19}
+                    />{" "}
+                    Scholarships
+                  </h3>
+                </Label>
+              </FormGroup>
+              <FormGroup check>
+                <Label check>
+                  <h3>
+                    <Input
+                      type="checkbox"
+                      onChange={this.handleCheckbox}
+                      name="girlExclusiveFeature"
+                      id={20}
+                    />
+                    GirlExclusive
+                  </h3>
+                </Label>
+              </FormGroup>
             </Form>
+
+            <br />
             <Button color="primary" size="lg" onClick={this.handleSubmit}>
               Submit
             </Button>
