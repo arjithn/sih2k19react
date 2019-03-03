@@ -97,7 +97,6 @@ const statesOfIndia = [
   },
   {
     label: "Nagaland",
-    value: "Nagaland"
   },
   {
     label: "Uttrakhand",

@@ -53,46 +53,46 @@ export const univTypeOptions = [
   },
   {
     label: "State Public University",
-    value: 0
+    value: "State Public University"
   },
   {
     label: "Deemed University-Government",
-    value: 0.1
+    value: "Deemed University-Government"
   },
   {
     label: "Deemed University-Private",
-    value: 0.20000000000000004
+    value: "Deemed University-Private"
   },
   {
     label: "Central University",
-    value: 0.30000000000000004
+    value: "Central University"
   },
   {
     label: "State Private University",
-    value: 0.4
+    value: "State Private University"
   },
   {
     label: "Deemed University-Government Aided",
-    value: 0.5000000000000001
+    value: "Deemed University-Government Aided"
   },
   {
     label: "Institute of National Importance",
-    value: 0.6000000000000001
+    value: "Institute of National Importance"
   },
   {
     label: "State Open University",
-    value: 0.7000000000000001
+    value: "State Open University"
   },
   {
     label: "Central Open University",
-    value: 0.8
+    value: "Central Open University"
   },
   {
     label: "Institute under State Legislature Act",
-    value: 0.9
+    value: "Institute under State Legislature Act"
   },
   {
     label: "Others",
-    value: 1
+    value: "Others"
   }
 ];

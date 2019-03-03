@@ -171,13 +171,13 @@ class MainPage extends Component {
   handleSubmit = e => {
     const { requestRanking } = this.props;
     const requestData = this.state;
-    delete requestData["selectedResearch"];
-    delete requestData["selectedAcademics"];
-    delete requestData["selectedInfrastructure"];
+    delete requestData["selectedOptions"];
+    // delete requestData["selectedAcademics"];
+    // delete requestData["selectedInfrastructure"];
     requestRanking(requestData);
     e.preventDefault();
     console.log("The form was submitted with the following data:");
-    console.log(JSON.stringify(this.state));
+    console.log(JSON.stringify(requestData));
   };
 
   handleIndianStateChange = selectedState => {
