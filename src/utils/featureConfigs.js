@@ -48,6 +48,10 @@ export const academicsOptions = [
 
 export const univTypeOptions = [
   {
+    label: "ALL Types",
+    value: 0
+  },
+  {
     label: "State Public University",
     value: 0
   },

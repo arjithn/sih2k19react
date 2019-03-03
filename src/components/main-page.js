@@ -256,6 +256,7 @@ class MainPage extends Component {
                         name="universityType"
                         value={this.state.selectedUnivType}
                         onChange={this.handleUnivTypeChange}
+                        defa
                         options={univTypeOptions}
                         placeholder="University Type Preference"
                       />
