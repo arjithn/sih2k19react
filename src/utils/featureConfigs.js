@@ -13,25 +13,6 @@ export const transformPreferences = pref => {
   }, {});
 };
 
-console.log(
-  JSON.stringify(
-    transformPreferences({
-      selectedState: { label: "Tamil Nadu", value: 0.06451612903225806, id: 1 },
-      selectedUnivType: {
-        label: "Deemed University-Private",
-        value: 0.20000000000000004,
-        id: 2
-      },
-      selectedInfrastructure: [],
-      selectedAcademics: [
-        { id: 105, label: "student faculty ratio" },
-        { id: 10, label: "laboratory" }
-      ],
-      selectedResearch: [],
-      girlExclusiveFeature: { id: "20" }
-    })
-  )
-);
 export const infrastructureOptions = [
   { id: 5, label: "hostel count" },
   { id: 17, label: "cafeteria", disabled: true },
