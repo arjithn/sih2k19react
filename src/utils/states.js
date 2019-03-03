@@ -1,131 +1,135 @@
 const statesOfIndia = [
   {
+    label: "Pan India",
+    value: "Pan India"
+  },
+  {
     label: "Gujarat",
-    value: 0
+    value: "Gujarat"
   },
   {
     label: "Punjab",
-    value: 0.03225806451612903
+    value: "Punjab"
   },
   {
     label: "Tamil Nadu",
-    value: 0.06451612903225806
+    value: "Tamil Nadu"
   },
   {
     label: "Chhatisgarh",
-    value: 0.0967741935483871
+    value: "Chhatisgarh"
   },
   {
     label: "Telangana",
-    value: 0.12903225806451612
+    value: "Telangana"
   },
   {
     label: "Maharashtra",
-    value: 0.16129032258064516
+    value: "Maharashtra"
   },
   {
     label: "Bihar",
-    value: 0.1935483870967742
+    value: "Bihar"
   },
   {
     label: "Rajasthan",
-    value: 0.22580645161290322
+    value: "Rajasthan"
   },
   {
     label: "Delhi",
-    value: 0.25806451612903225
+    value: "Delhi"
   },
   {
     label: "Haryana",
-    value: 0.29032258064516125
+    value: "Haryana"
   },
   {
     label: "Jharkhand",
-    value: 0.32258064516129037
+    value: "Jharkhand"
   },
   {
     label: "Meghalaya",
-    value: 0.3548387096774194
+    value: "Meghalaya"
   },
   {
     label: "Uttar Pradesh",
-    value: 0.3870967741935484
+    value: "Uttar Pradesh"
   },
   {
     label: "Madhya Pradesh",
-    value: 0.4193548387096774
+    value: "Madhya Pradesh"
   },
   {
     label: "Odisha",
-    value: 0.4516129032258065
+    value: "Odisha"
   },
   {
     label: "Puducherry",
-    value: 0.4838709677419355
+    value: "Puducherry"
   },
   {
     label: "Karnataka",
-    value: 0.5161290322580645
+    value: "Karnataka"
   },
   {
     label: "Tripura",
-    value: 0.5483870967741935
+    value: "Tripura"
   },
   {
     label: "West Bengal",
-    value: 0.5806451612903226
+    value: "West Bengal"
   },
   {
     label: "Himachal Pradesh",
-    value: 0.6129032258064516
+    value: "Himachal Pradesh"
   },
   {
     label: "Andhra Pradesh",
-    value: 0.6451612903225806
+    value: "Andhra Pradesh"
   },
   {
     label: "Assam",
-    value: 0.6774193548387097
+    value: "Assam"
   },
   {
     label: "Mizoram",
-    value: 0.7096774193548387
+    value: "Mizoram"
   },
   {
     label: "Nagaland",
-    value: 0.7419354838709677
+    value: "Nagaland"
   },
   {
     label: "Uttrakhand",
-    value: 0.7741935483870967
+    value: "Uttrakhand"
   },
   {
     label: "Kerala",
-    value: 0.8064516129032258
+    value: "Kerala"
   },
   {
     label: "Manipur",
-    value: 0.8387096774193549
+    value: "Manipur"
   },
   {
     label: "Sikkim",
-    value: 0.8709677419354839
+    value: "Sikkim"
   },
   {
     label: "Goa",
-    value: 0.9032258064516129
+    value: "Goa"
   },
   {
     label: "Arunachal Pradesh",
-    value: 0.935483870967742
+    value: "Arunachal Pradesh"
   },
   {
     label: "Chandigarh",
-    value: 0.967741935483871
+    value: "Chandigarh"
   },
   {
     label: "Jammu and Kashmir",
-    value: 1
+    value: "Jammu and Kashmir"
   }
 ];
 
