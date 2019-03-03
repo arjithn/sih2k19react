@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+var expanded = false;
+
+function showCheckboxes() {
+  var checkboxes = document.getElementById("checkboxes");
+  if (!expanded) {
+    checkboxes.style.display = "block";
+    expanded = true;
+  } else {
+    checkboxes.style.display = "none";
+    expanded = false;
+  }
+}
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+#borderimg1 { 
+  border: 10px solid transparent;
+  padding: 15px;
+  -webkit-border-image: url(borderimage.png) 30 round; /* Safari 3.1-5 */
+  -o-border-image: url(borderimage.png) 30 round; /* Opera 11-12.1 */
+  border-image: url(borderimage.png) 30 round;
+}
+body{ background-color:purple}
+.button {
+  background-color: brown; /* Green */
+  transition: width 2s;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+.button2:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+  width: 300px;
+  
+}
+.multiselect {
+  width: 200px;
+}
+
+.selectBox {
+  position: relative;
+}
+
+.selectBox select {
+  width: 100%;
+  font-weight: bold;
+}
+
+.overSelect {
+  position:absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+#checkboxes {
+  display: none;
+  border: 1px #dadada solid;
+  color:black;
+}
+
+#checkboxes label {
+  display: block;
+  color:black;
+}
+
+#checkboxes label:hover {
+  background-color: #1e90ff;
+  color:red;
+}
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: black;
+  color: white;
+}
+</style>
+</head>
+<body>
+<center>
+<h>AICTE</h></center>
+<div class="topnav">
+  <a class="active">COLLEGE</a>
+  <a href="student.html">STUDENT</a>
+  <a href="#contact">ORGANIZATION</a>
+  
+</div>
+
+<div style="padding-left:16px">
+  <form>
+  <div class="multiselect">
+    <div class="selectBox" onclick="showCheckboxes()">
+      <select>
+        <option>University Type</option>
+      </select>
+      <div class="overSelect"></div>
+    </div>
+    <div id="checkboxes">
+      <label for="one">
+        <input type="checkbox" id="one" />First checkbox</label>
+      <label for="two">
+        <input type="checkbox" id="two" />Second checkbox</label>
+      <label for="three">
+        <input type="checkbox" id="three" />Third checkbox</label>
+    </div>
+  </div>
+<br><br>
+<div class="multiselect">
+    <div class="selectBox" onclick="showCheckboxes()">
+      <select>
+        <option>ACADEMIC</option>
+      </select>
+      <div class="overSelect"></div>
+    </div>
+    <div id="checkboxes">
+      <label for="one">
+        <input type="checkbox" id="fo" />first</label>
+      <label for="two">
+        <input type="checkbox" id="fi" />second</label>
+      <label for="three">
+        <input type="checkbox" id="si" />Third</label>
+    </div>
+  </div>
+
+<br><br>
+<div class="multiselect">
+    <div class="selectBox" onclick="showCheckboxes()">
+      <select>
+        <option>Infrastructure</option>
+      </select>
+      <div class="overSelect"></div>
+    </div>
+    <div id="checkboxes">
+      <label for="one">
+        <input type="checkbox" id="fo" />First checkbox</label>
+      <label for="two">
+        <input type="checkbox" id="fi" />Second checkbox</label>
+      <label for="three">
+        <input type="checkbox" id="si" />Third checkbox</label>
+    </div>
+  </div>
+
+<br><br>
+<div class="multiselect">
+    <div class="selectBox" onclick="showCheckboxes()">
+      <select>
+        <option>state</option>
+      </select>
+      <div class="overSelect"></div>
+    </div>
+    <div id="checkboxes">
+      <label for="one">
+        <input type="checkbox" id="fo" />First checkbox</label>
+      <label for="two">
+        <input type="checkbox" id="fi" />Second checkbox</label>
+      <label for="three">
+        <input type="checkbox" id="si" />Third checkbox</label>
+    </div>
+  </div>
+
+
+</form>
+  
+
+<button class="button button2">SUBMIT</button>
+</body>
+</html>
